@@ -1,53 +1,38 @@
-# DScover_main
-2025-1 DScover_mainproject
+# Weather Forecast Error Correction
 
-🌤️✨ 기상 예측 보정 모델 ✨🌤️
-귀여운 기상청 도우미 프로젝트 🐰☁️
+This project addresses the correction of forecast errors caused by the spatial difference between meteorological forecast grids and actual observation points. Accurate 24-hour ahead weather prediction is essential for efficient operation of energy facilities such as solar power plants and gas turbines.
 
-🐾 프로젝트 소개
-기상 관측 지점과 예측 지점의 이격으로 인한 오차를 보정해주는 똑똑한 모델이에요!
-태양광 발전소나 가스터빈 운전 등, 대기 상태가 중요한 산업에서 익일 24시간의 정확한 기상 예측을 위해 만들어졌답니다 ⛅🌱
+---
 
-📦 사용한 데이터
-📁 학습용
-기간: 2024.01.01 ~ 2025.03.31 (15개월)
-형식: CSV (1시간 간격)
-구성:
-기상예측 데이터 (LDAPS 격자 데이터)
-기상관측 데이터 (발전소 측정 실측 데이터)
+## **Project Overview**
 
-🧪 검증용
-기간: 2025.07 (1개월)
-형식: CSV (관측값은 미제공)
-검증 지표: RMSE, MAE
+- **Objective**: Develop a machine learning model to correct forecast errors using historical data.
+- **Key variables**: Temperature (°C), Humidity (%), Atmospheric Pressure (hPa)
+- **Modeling period**: 2024.01.01 ~ 2025.03.31 (15 months)
 
-🧠 분석 목표
-관측값과 예측값의 차이를 줄이자!
-✨ 오차 보정 모델을 학습하여 기온 / 습도 / 대기압 예측을 정밀하게 만들기!
+---
 
-⚙️ 실행 환경
-Python 3.7 이상
-Pandas, NumPy, XGBoost, Scikit-learn 등 Open 라이브러리
+## **Data Description**
 
-💾 데이터 예시
-기상관측일시, 일사량, 습도(%), 절대습도, 기온(degC), 대기압(hPa)
-2024-01-01 10:00:00, 196.56, 53.61, 0.004, 4.01, 1012.17
-기상관측일시, 습도(%), 기온(degC), 대기압(mmHg)
-2024-05-01 00:00:00, 73.02, 13.98, 751.38
+### 1. Training Data
+- **Frequency**: Hourly
+- **Format**: CSV
+- **Forecast Data**: Extracted from LDAPS grid point closest to the observation site
+- **Observation Data**: Collected at the power generation facility location
 
-📊 모델 성능 평가 기준
-항목	가중치
-🌡️ 기온	0.5
-💧 습도	0.3
-🌀 대기압	0.2
+### 2. Evaluation Data
+- **Period**: 2025.07 (1 month)
+- **Observation data**: Not provided during evaluation
+- **Evaluation metrics**: MAE (Mean Absolute Error), RMSE (Root Mean Squared Error)
 
-RMSE: 예측값과 실제값 차이의 제곱 평균의 제곱근 🧮
-MAE: 예측값과 실제값의 절댓값 평균 💡
+---
 
-📈 결과물 제출
-✅ Python 코드 (.ipynb or .py)
-✅ 분석 결과 보고서
-✅ 검증 가능한 코드 또는 Excel
+## **Sample Data Format**
+**Forecast Data**
 
-🧸 한 줄 요약
-"기상 예측, 귀엽게 보정하자 ☁️💖"
+```csv
+기상관측일시,일사량,습도(%),절대습도,기온(degC),대기압(hPa)
+2024-01-01 10:00:00,196.56,53.61,0.004,4.01,1012.17
+2024-01-01 11:00:00,323.78,49.06,0.004,6.42,1011.96
+
+
